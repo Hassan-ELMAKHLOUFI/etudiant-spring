@@ -39,6 +39,12 @@
                         <span th:errors="${etudiant.prenom}"></span>
                     </div>
 
+                    <div class="form-group mt-lg-2">
+                        <label class="control-label">Email :</label>
+                        <input type="text" name="email" th:value="${etudiant.email}" class="form-control">
+                        <span th:errors="${etudiant.email}"></span>
+                    </div>
+
                     <div class="form-group mt-lg-4">
                         <label class="control-label">Date Naissance :</label>
                         <input type="date" name="DateNaissance" th:value="${etudiant.dateNaissance}" class="form-control">

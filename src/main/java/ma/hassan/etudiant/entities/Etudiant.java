@@ -21,7 +21,9 @@ public class Etudiant {
     @NonNull
     @Size(min = 3,max = 20)
     private String nom;
+    @Size(min = 3,max = 20)
     private String prenom;
+    @Size(min = 6,max = 50)
     private String email;
 
     @Temporal(TemporalType.DATE)
