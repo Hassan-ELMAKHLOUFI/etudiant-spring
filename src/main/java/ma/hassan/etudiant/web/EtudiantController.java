@@ -46,7 +46,7 @@ public class EtudiantController {
 
     @GetMapping("/")
     public String home(){
-        return "redirect:/user/index";
+        return "Home";
     }
 
     @GetMapping(path="/admin/Ajouter")
