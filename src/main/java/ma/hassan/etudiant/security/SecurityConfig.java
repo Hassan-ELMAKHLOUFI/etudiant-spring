@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -41,13 +42,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin();
+        http.formLogin().loginPage("/login").defaultSuccessUrl("/user/index", true);
+        http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+              .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true);
         //http.authorizeHttpRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeHttpRequests().antMatchers("/admin/**").hasAuthority("admin");
         http.authorizeHttpRequests().antMatchers("/user/**").hasAuthority("user");
-        http.authorizeHttpRequests().antMatchers("/webjars/**").hasAuthority("admin");
-        http.authorizeHttpRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
+        //http.authorizeHttpRequests().anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/403");
+
     }
 
 }
