@@ -19,6 +19,7 @@ public class EtudiantApplication {
     public static void main(String[] args) {
         SpringApplication.run(EtudiantApplication.class, args);
     }
+    // @Bean
      CommandLineRunner commandLineRunner(EtudiantRepository etudiantRepository){
         return args -> {
             etudiantRepository.save( new Etudiant(null,"hassan","elmakhloufi","hassan@gmail.com",new Date(),true, Genre.Homme));
@@ -33,7 +34,7 @@ public class EtudiantApplication {
         return new BCryptPasswordEncoder();
     }
 
-  // @Bean
+    //@Bean
     CommandLineRunner saveUsers(SecurityService securityService){
         return args -> {
             securityService.saveNewUser("mohamed","1234","1234");
