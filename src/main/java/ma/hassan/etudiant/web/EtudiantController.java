@@ -38,7 +38,7 @@ public class EtudiantController {
         return"etudiant";
     }
 
-    @DeleteMapping("/admin/delete")
+    @GetMapping("/admin/delete")
     public String delete(Long id,String keyword,int page){
         etudiantRepository.deleteById(id);
         return "redirect:/user/index?page="+page+"&keyword="+keyword;
