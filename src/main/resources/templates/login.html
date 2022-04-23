@@ -87,17 +87,17 @@
       <h3 class="signin-text mb-3"> Sign In</h3>
       <form th:action="@{/login}" method="post">
         <div class="form-group">
-          <label for="username">Email</label>
+          <label for="username">username</label>
           <input type="text" id="username" name="username" class="form-control">
         </div>
+        <br>
+        <br>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password"name="password" class="form-control">
         </div>
-        <div class="form-group form-check">
-          <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
-          <label class="form-check-label" for="checkbox">Remember Me</label>
-        </div>
+        <br>
+        <br>
         <button class="btn btn-class" type="submit">Login</button>
       </form>
     </div>
